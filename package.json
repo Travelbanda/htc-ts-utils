@@ -1,0 +1,36 @@
+{
+  "name": "htc-ts-utils",
+  "version": "0.0.1",
+  "description": "",
+  "engines": {
+    "node": "^8.5.0",
+    "yarn": "^1.0.2"
+  },
+  "scripts": {
+    "build": "source ./build.sh",
+    "compile": "tsc --noEmit -p src",
+    "lint": "tslint -p src && tslint -p test && tslint webpack.config.js",
+    "lint-fix": "tslint --fix -p src -t verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Travelbanda/htc-ts-utils.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/Travelbanda/htc-ts-utils/issues"
+  },
+  "homepage": "https://gitlab.com/Travelbanda/htc-ts-utils#README",
+  "devDependencies": {
+    "ts-loader": "3.5.0",
+    "tslint": "5.9.1",
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "2.9.2",
+    "webpack": "3.11.0",
+    "uglify-js": "3.4.4"
+  },
+  "dependencies": {
+    "tslib": "1.9.3"
+  }
+}
