@@ -11,7 +11,7 @@
     "compile": "tsc --noEmit -p .",
     "lint": "tslint -p src && tslint -p test && tslint webpack.config.js",
     "lint-fix": "tslint --fix -p src -t verbose",
-    "prepublish": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
