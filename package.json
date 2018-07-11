@@ -1,6 +1,6 @@
 {
   "name": "htc-ts-utils",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "engines": {
     "node": "^8.5.0",
@@ -21,7 +21,6 @@
     "index.js",
     "index.js.map"
   ],
-  "author": "",
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://gitlab.com/Travelbanda/htc-ts-utils/issues"
@@ -34,5 +33,6 @@
   },
   "dependencies": {
     "tslib": "1.9.3"
-  }
+  },
+  "postinstall": "build"
 }
