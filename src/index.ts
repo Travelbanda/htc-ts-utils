@@ -1,5 +1,9 @@
 import { Map as IMap } from 'immutable'
 
+// common utils
+
+export const noop = () => {}
+
 // object utils
 
 export function filterObject<T extends { [o: string]: any }>(obj: T) {
