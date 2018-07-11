@@ -1,8 +1,10 @@
-.vscode
 node_modules
 dist
+.vscode
 .DS_Store
 .idea
+.nyc_output
+coverage
 
 index.d.ts
 index.js
