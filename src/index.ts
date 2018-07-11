@@ -63,27 +63,6 @@ export function getFileFromInput(input: HTMLInputElement): File | null {
   return input.files && input.files.length ? input.files[0] : null
 }
 
-// other utils
-
-export function toQueryString(params: {[key: string]: string | string[]}): string {
-  const str = []
-
-  for (const key in params) {
-    if (params.hasOwnProperty(key)) {
-      const value = params[key]
-
-      if (Array.isArray(value)) {
-        for (const item of value) {
-          str.push(encodeURIComponent(key) + '=' + encodeURIComponent(item))
-        }
-      } else {
-        str.push(encodeURIComponent(key) + '=' + encodeURIComponent(value))
-      }
-    }
-  }
-  return str.join('&')
-}
-
 // list utils
 
 export const sliceArray = <T>(arr: T[], amount: number, smooth?: boolean) => {
