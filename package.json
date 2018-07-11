@@ -10,7 +10,8 @@
     "build": "tsc -d -p .",
     "compile": "tsc --noEmit -p .",
     "lint": "tslint -p src && tslint -p test && tslint webpack.config.js",
-    "lint-fix": "tslint --fix -p src -t verbose"
+    "lint-fix": "tslint --fix -p src -t verbose",
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,5 @@
   },
   "dependencies": {
     "tslib": "1.9.3"
-  },
-  "postinstall": "build"
+  }
 }
