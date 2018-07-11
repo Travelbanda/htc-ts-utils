@@ -5,5 +5,5 @@ echo $VERSION
 
 git commit -am $VERSION
 git push
-git tag $VERSION
-git push --tags
+
+npm publish
