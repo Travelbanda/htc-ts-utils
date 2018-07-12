@@ -135,7 +135,9 @@ export const getObject: IGetObject = (key) => {
   return result
 }
 
-export const getString = (key: string) => getItem(key) || ''
+export type IGetString = (key: string) => string
+
+export const getString: IGetString = (key) => getItem(key) || ''
 
 // immutable utils
 
