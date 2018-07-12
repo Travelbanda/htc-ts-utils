@@ -46,6 +46,8 @@ export function isSameDay(date1: Date, date2: Date): boolean {
 export const serverTimeToDate = (seconds: number) => new Date(seconds * 1000)
 export const dateTimeToServer = (d: Date) => Math.floor(d.getTime() / 1000)
 
+export const daysInMonth = (month: number, year: number) => new Date(year, month, 0).getDate()
+
 export const dateFormat = 'DD.MM.YYYY'
 
 export function createBirthdate(date: Date): Date {
@@ -121,9 +123,9 @@ export const setString: ISetString = (key, val) => {
   setItem(key, val)
 }
 
-export type IGetString = (key: string) => string
+export type IGetObject = (key: string) => object
 
-export const getObject: IGetString = (key) => {
+export const getObject: IGetObject = (key) => {
   let result = null
   try {
     result = JSON.parse(localStorage.getItem(key) || '')
