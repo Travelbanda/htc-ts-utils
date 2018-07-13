@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "tsc -d -p ./src --outDir .",
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "compile": "tsc --noEmit -p .",
     "lint": "tslint -p src && tslint -p test && tslint webpack.config.js",
     "lint-fix": "tslint --fix -p src -t verbose",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/mocha": "5.2.2",
     "@types/node": "10.5.2",
+    "codecov": "3.0.4",
     "immutable": "3.8.2",
     "mocha": "5.2.0",
     "nyc": "12.0.2",
