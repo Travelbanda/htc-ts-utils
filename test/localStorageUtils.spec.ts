@@ -39,6 +39,11 @@ describe('utils/localStorage', () => {
     assert.strictEqual(JSON.stringify(getObject('asd')), JSON.stringify(a))
   })
 
+  it('getObject error', () => {
+    stb.returns(undefined)
+    assert.strictEqual(getObject('asd'), null)
+  })
+
   it('removeItem', () => {
     removeItem('asd')
     assert(ri.calledOnce)
