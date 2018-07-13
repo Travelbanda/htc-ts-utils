@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha'
 import { strictEqual } from "assert"
 import { validateEmail } from '../src'
 
@@ -9,5 +8,7 @@ describe('utils/uiUtils', () => {
     strictEqual(validateEmail('123qwe,123@da'), true)
     strictEqual(validateEmail('123qwe@qwe.qweqwe'), true)
     strictEqual(validateEmail('@ad.ru'), false)
+    strictEqual(validateEmail('ru'), false)
+    strictEqual(validateEmail(new Array(200).join('x')), false)
   })
 })

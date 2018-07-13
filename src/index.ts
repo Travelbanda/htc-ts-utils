@@ -3,9 +3,11 @@ import { Map as IMap } from 'immutable'
 // common utils
 
 /** @deprecated */
-export const noop = () => {}
+export const noop = () => {
+}
 
-export const NOOP = () => {}
+export const NOOP = () => {
+}
 
 // object utils
 
@@ -21,17 +23,17 @@ export function filterObject<T extends { [o: string]: any }>(obj: T) {
 
 // ui utils
 
-export function isScrollbarVisible(el: HTMLElement) {
+export function isScrollbarVisible(el: { scrollHeight: number, clientHeight: number }) {
   return el.scrollHeight > el.clientHeight
 }
 
-export function scrollDistanceToBottom(el: HTMLElement) {
+export function scrollDistanceToBottom(el: { scrollTop: number, clientHeight: number, scrollHeight: number }) {
   const { scrollTop, clientHeight, scrollHeight } = el
 
   return scrollHeight - scrollTop - clientHeight
 }
 
-export const moveCaretToTheEnd = (i: HTMLInputElement, text: string) => {
+export const moveCaretToTheEnd = (i: { value: string }, text: string) => {
   if (text) {
     i.value = ''
     i.value = text

@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha'
 import { strictEqual } from 'assert'
 import { isScrollbarVisible, scrollDistanceToBottom, moveCaretToTheEnd } from '../src'
 
@@ -8,7 +7,7 @@ describe('utils/uiUtils', () => {
         scrollHeight: 2000,
         clientHeight: 150,
       }
-      strictEqual(isScrollbarVisible(e as HTMLElement), true)
+      strictEqual(isScrollbarVisible(e), true)
     })
 
     it('scrollDistanceToBottom', () => {
@@ -17,14 +16,14 @@ describe('utils/uiUtils', () => {
         clientHeight: 200,
         scrollTop: 1000,
       }
-      strictEqual(scrollDistanceToBottom(e as HTMLElement), 800)
+      strictEqual(scrollDistanceToBottom(e), 800)
     })
 
     it('moveCaretToTheEnd', () => {
       const el = {
         value: 'qweqwe'
       }
-      moveCaretToTheEnd(el as HTMLInputElement, 'text')
+      moveCaretToTheEnd(el, 'text')
       strictEqual(el.value, 'text')
     })
 })

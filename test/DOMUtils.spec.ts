@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha'
 import { strictEqual } from "assert"
 import { getFileFromInput } from '../src'
 
