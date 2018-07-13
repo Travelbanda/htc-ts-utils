@@ -2,7 +2,10 @@ import { Map as IMap } from 'immutable'
 
 // common utils
 
+/** @deprecated */
 export const noop = () => {}
+
+export const NOOP = () => {}
 
 // object utils
 
@@ -65,7 +68,7 @@ export function validateEmail(email: string): boolean {
 
 // DOM utils
 
-export function getFileFromInput(input: HTMLInputElement): File | null {
+export function getFileFromInput(input: { files?: ArrayLike<File> }): File | null {
   return input.files && input.files.length ? input.files[0] : null
 }
 
