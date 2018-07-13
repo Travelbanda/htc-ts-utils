@@ -1,4 +1,5 @@
-import { strictEqual } from "assert"
+import { strictEqual } from 'assert'
+
 import { getFileFromInput } from '../src'
 
 describe('utils/domUtils', () => {

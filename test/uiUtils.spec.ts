@@ -1,4 +1,5 @@
 import { strictEqual } from 'assert'
+
 import { isScrollbarVisible, scrollDistanceToBottom, moveCaretToTheEnd } from '../src'
 
 describe('utils/uiUtils', () => {

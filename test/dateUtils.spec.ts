@@ -1,4 +1,5 @@
 import { strictEqual } from 'assert'
+
 import { isSameDay, serverTimeToDate, dateTimeToServer, daysInMonth, createBirthdate } from '../src'
 
 describe('utils/dateUtils', () => {

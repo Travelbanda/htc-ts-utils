@@ -1,4 +1,5 @@
 import { deepStrictEqual } from 'assert'
+
 import { filterObject } from '../src'
 
 describe('utils/objectUtils', () => {

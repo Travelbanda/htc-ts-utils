@@ -1,4 +1,5 @@
 import { strictEqual } from "assert"
+
 import { validateEmail } from '../src'
 
 describe('utils/uiUtils', () => {
