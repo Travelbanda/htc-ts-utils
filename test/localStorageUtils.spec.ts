@@ -6,10 +6,8 @@ import { getObject, getString, removeItem, setObject, setString } from '../src'
 const a = { a: 1, b: 2 }
 const ri = fake()
 let si = fake()
-let isError = false
 
 describe('utils/localStorage', () => {
-
   (global as any).localStorage = {
     setItem: si,
     getItem: () => {
@@ -18,13 +16,7 @@ describe('utils/localStorage', () => {
     asd: a
   }
 
-  stub((global as any).localStorage, 'getItem').callsFake(() => {
-      if (isError) {
-        throw new Error()
-      }
-      return JSON.stringify(a)
-    }
-  )
+  let stb = stub((global as any).localStorage, 'getItem')
 
   it('setString', () => {
     setString('asd', 'qwe')
@@ -32,20 +24,19 @@ describe('utils/localStorage', () => {
   })
 
   it('getString', () => {
+    stb.returns(JSON.stringify(a))
     assert.strictEqual(getString('asd'), '{"a":1,"b":2}')
   })
 
-  describe('object', () => {
-
-    it('setObject', () => {
-      setObject('asd', a)
-      assert(si.calledWith('asd', JSON.stringify(a)))
-    })
+  it('setObject', () => {
+    setObject('asd', a)
+    assert(si.calledWith('asd', JSON.stringify(a)))
+  })
 
 
-    it('getObject', () => {
-      assert.strictEqual(JSON.stringify(getObject('asd')), JSON.stringify(a))
-    })
+  it('getObject', () => {
+    stb.returns(JSON.stringify(a))
+    assert.strictEqual(JSON.stringify(getObject('asd')), JSON.stringify(a))
   })
 
   it('removeItem', () => {
@@ -55,8 +46,7 @@ describe('utils/localStorage', () => {
   })
 
   it('getItem error', () => {
-    isError = true
+    stb.throws()
     assert.strictEqual(getString('asd'), '')
-    isError = false
   })
 })
