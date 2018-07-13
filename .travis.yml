@@ -1,0 +1,10 @@
+cache: yarn
+language: node_js
+node_js:
+  - 8
+  - 10
+script:
+  - yarn lint
+  - yarn build
+  - yarn coverage
+  - yarn codecov
