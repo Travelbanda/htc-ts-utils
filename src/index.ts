@@ -6,8 +6,7 @@ import { Map as IMap } from 'immutable'
 export const noop = () => {
 }
 
-export const NOOP = () => {
-}
+export const NOOP = noop
 
 // object utils
 

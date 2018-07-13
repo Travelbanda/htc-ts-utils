@@ -26,4 +26,12 @@ describe('utils/uiUtils', () => {
       moveCaretToTheEnd(el, 'text')
       strictEqual(el.value, 'text')
     })
+
+    it('moveCaretToTheEnd empty text', () => {
+      const el = {
+        value: 'asd'
+      }
+      moveCaretToTheEnd(el, '')
+      strictEqual(el.value, 'asd')
+    })
 })

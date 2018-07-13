@@ -6,19 +6,25 @@ import { getObject, getString, removeItem, setObject, setString } from '../src'
 const a = { a: 1, b: 2 }
 const ri = fake()
 let si = fake()
+let isError = false
 
 describe('utils/localStorage', () => {
 
-  beforeEach(() => {
-    (global as any).localStorage = {
-      setItem: si,
-      getItem: () => {
-      },
-      removeItem: ri,
-      asd: a
+  (global as any).localStorage = {
+    setItem: si,
+    getItem: () => {
+    },
+    removeItem: ri,
+    asd: a
+  }
+
+  stub((global as any).localStorage, 'getItem').callsFake(() => {
+      if (isError) {
+        throw new Error()
+      }
+      return JSON.stringify(a)
     }
-    stub((global as any).localStorage, 'getItem').returns(JSON.stringify({ a: 1, b: 2, }))
-  })
+  )
 
   it('setString', () => {
     setString('asd', 'qwe')
@@ -48,4 +54,9 @@ describe('utils/localStorage', () => {
     assert(ri.calledWith('asd'))
   })
 
+  it('getItem error', () => {
+    isError = true
+    assert.strictEqual(getString('asd'), '')
+    isError = false
+  })
 })
