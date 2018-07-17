@@ -1,6 +1,6 @@
 {
   "name": "htc-ts-utils",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "",
   "engines": {
     "node": "^8.5.0 || ^10.6.0",
