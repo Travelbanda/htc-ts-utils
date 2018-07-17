@@ -69,7 +69,7 @@ export function validateEmail(email: string): boolean {
 
 // DOM utils
 
-export function getFileFromInput(input: { files?: ArrayLike<File> }): File | null {
+export function getFileFromInput<T>(input: { files?: ArrayLike<T | null> }): T | null {
   return input.files && input.files.length ? input.files[0] : null
 }
 
