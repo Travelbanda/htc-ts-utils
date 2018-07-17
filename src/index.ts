@@ -92,6 +92,12 @@ export const sortUniq = <T>(array: T[], compare?: () => number) => array
   .sort(compare)
   .filter((v, ind, arr) => !ind || arr[ind - 1] !== v)
 
+export const getNewElements = <T>(oldArray: T[], newArray: T[]): T[] =>
+  newArray.filter((element) => oldArray.indexOf(element) === -1)
+
+export const getRemovedElements = <T>(oldArray: T[], newArray: T[]): T[] =>
+  getNewElements(newArray, oldArray)
+
 // local storage utils
 
 const setItem = (key: string, obj: any) => {
