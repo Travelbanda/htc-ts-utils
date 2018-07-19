@@ -157,3 +157,11 @@ export const mergeArrayToMap =
       m.set(el.id, el)
     }
   })
+
+export type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+}
+
+export type DeepPartialNullable<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartialNullable<T[P]> : T[P] | null
+}
