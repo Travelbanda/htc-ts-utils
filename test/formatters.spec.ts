@@ -1,28 +1,28 @@
 import { strictEqual } from 'assert'
-import { stringFormatter } from '../src'
+import { trimSpaces } from '../src'
 
 describe('utils/formatters', () => {
-  it('stringFormatter() - empty string', () => {
-    strictEqual(stringFormatter(''), '')
+  it('trimSpaces() - empty string', () => {
+    strictEqual(trimSpaces(''), '')
   })
 
-  it('stringFormatter() - string of spaces', () => {
-    strictEqual(stringFormatter('   '), '')
+  it('trimSpaces() - string of spaces', () => {
+    strictEqual(trimSpaces('   '), '')
   })
 
-  it('stringFormatter() - trim check', () => {
-    strictEqual(stringFormatter('  a  '), 'a')
+  it('trimSpaces() - trim check', () => {
+    strictEqual(trimSpaces('  a  '), 'a')
   })
 
-  it('stringFormatter() - internal spaces check', () => {
-    strictEqual(stringFormatter('a b  c'), 'a b c')
+  it('trimSpaces() - internal spaces check', () => {
+    strictEqual(trimSpaces('a b  c'), 'a b c')
   })
 
-  it('stringFormatter() - aside + internal spaces', () => {
-    strictEqual(stringFormatter(' a  b   c  '), 'a b c')
+  it('trimSpaces() - aside + internal spaces', () => {
+    strictEqual(trimSpaces(' a  b   c  '), 'a b c')
   })
 
-  it('stringFormatter() - no spaces', () => {
-    strictEqual(stringFormatter('abc'), 'abc')
+  it('trimSpaces() - no spaces', () => {
+    strictEqual(trimSpaces('abc'), 'abc')
   })
 })

@@ -169,5 +169,5 @@ export type DeepPartialNullable<T> = {
 
 // formatters
 
-export const stringFormatter = (s: string): string =>
+export const trimSpaces = (s: string): string =>
   s.trim().replace(/\s+/g, ' ')
