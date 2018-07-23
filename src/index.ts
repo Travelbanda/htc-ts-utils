@@ -165,3 +165,9 @@ export type DeepPartial<T> = {
 export type DeepPartialNullable<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartialNullable<T[P]> : T[P] | null
 }
+
+
+// formatters
+
+export const stringFormatter = (s: string): string =>
+  s.trim().replace(/\s+/g, ' ')
