@@ -157,3 +157,7 @@ export const mergeArrayToMap =
       m.set(el.id, el)
     }
   })
+
+export function hasErrors(fieldsError: {[index: string]: any}): boolean {
+  return Object.keys(fieldsError).some((field) => fieldsError[field])
+}
