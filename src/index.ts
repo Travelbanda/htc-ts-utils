@@ -171,3 +171,10 @@ export type DeepPartialNullable<T> = {
 
 export const trimSpaces = (s: string): string =>
   s.trim().replace(/\s+/g, ' ')
+
+// forms
+
+export function hasErrors(fieldsError: {[index: string]: any}): boolean {
+  return Object.keys(fieldsError).some((field) => fieldsError[field])
+}
+
