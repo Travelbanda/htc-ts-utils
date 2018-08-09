@@ -158,6 +158,23 @@ export const mergeArrayToMap =
     }
   })
 
+export type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+}
+
+export type DeepPartialNullable<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartialNullable<T[P]> : T[P] | null
+}
+
+
+// formatters
+
+export const trimSpaces = (s: string): string =>
+  s.trim().replace(/\s+/g, ' ')
+
+// forms
+
 export function hasErrors(fieldsError: {[index: string]: any}): boolean {
   return Object.keys(fieldsError).some((field) => fieldsError[field])
 }
+
