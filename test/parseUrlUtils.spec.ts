@@ -20,6 +20,22 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'mailto:info@hotelchat.me')
   })
 
+  it('emptyString()', () => {
+    const text = ''
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 0)
+  })
+
+  it('onlyEmailWithProtocol()', () => {
+    const text = 'mailto:info@hotelchat.me'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, 'info@hotelchat.me')
+    strictEqual((parsing[0] as TextPartLink).url, 'mailto:info@hotelchat.me')
+  })
+
   it('onlyUrl()', () => {
     const text = 'facebook.com'
     const parsing = parseText(text)
@@ -47,20 +63,22 @@ describe('utils/dateUtils', () => {
   })
 
   it('textAndUrlAndEmail()', () => {
-    const text = 'Это текст с некоторым url и email, например facebook.com и info@hotelchat.me'
+    const text = 'Это текст с некоторым url и email, например info@hotelchat.me и facebook.com!!!'
     const parsing = parseText(text)
 
-    strictEqual(parsing.length, 4)
+    strictEqual(parsing.length, 5)
     strictEqual(parsing[0].type, TextTokenType.TEXT)
     strictEqual(parsing[0].content, 'Это текст с некоторым url и email, например ')
     strictEqual(parsing[1].type, TextTokenType.LINK)
-    strictEqual(parsing[1].content, 'facebook.com')
-    strictEqual((parsing[1] as TextPartLink).url, 'http://facebook.com')
+    strictEqual(parsing[1].content, 'info@hotelchat.me')
+    strictEqual((parsing[1] as TextPartLink).url, 'mailto:info@hotelchat.me')
     strictEqual(parsing[2].type, TextTokenType.TEXT)
     strictEqual(parsing[2].content, ' и ')
     strictEqual(parsing[3].type, TextTokenType.LINK)
-    strictEqual(parsing[3].content, 'info@hotelchat.me')
-    strictEqual((parsing[3] as TextPartLink).url, 'mailto:info@hotelchat.me')
+    strictEqual(parsing[3].content, 'facebook.com')
+    strictEqual((parsing[3] as TextPartLink).url, 'http://facebook.com')
+    strictEqual(parsing[4].type, TextTokenType.TEXT)
+    strictEqual(parsing[4].content, '!!!')
   })
 
 })
