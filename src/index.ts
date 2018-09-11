@@ -243,12 +243,6 @@ export type TextPartLink = {
 export type TextPart = TextPartSimple | TextPartLink
 
 function captureText(text: string, eventTokens: TextPart[]): void {
-  const lastToken = eventTokens.length ? eventTokens[eventTokens.length - 1] : null
-
-  if (lastToken && lastToken.type === TextTokenType.TEXT) {
-    lastToken.content += text
-    return
-  }
   eventTokens.push({
     content: text,
     type: TextTokenType.TEXT,
