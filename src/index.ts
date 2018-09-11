@@ -21,6 +21,16 @@ export function filterObject<T extends { [o: string]: any }>(obj: T) {
   return ret
 }
 
+export const createMapForSearch = <T, K extends keyof T>(list: T[], key: K) => {
+  const map = new Map<T[K], T>()
+
+  for (const v of list) {
+    map.set(v[key], v)
+  }
+
+  return map
+}
+
 // ui utils
 
 export function isScrollbarVisible(el: { scrollHeight: number, clientHeight: number }) {
