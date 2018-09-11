@@ -289,14 +289,22 @@ export function parseText(text?: string): TextPart[] {
     }
     if (mail) {
       nextTokenFirstIndex = offset + mail.length
-      if (mail.indexOf(emailProtocol) === 0) {
-        mail = mail.slice(7)
+      const m1= mail.substring(mail.indexOf('@') + 1, mail.length)
+      if (isTld(m1.substring(m1.indexOf('.') + 1, mail.length))) {
+        if (mail.indexOf(emailProtocol) === 0) {
+          mail = mail.slice(7)
+        }
+        parts.push({
+          content: mail,
+          type: TextTokenType.LINK,
+          url: emailProtocol + mail,
+        })
+      } else {
+        parts.push({
+          content: mail,
+          type: TextTokenType.TEXT,
+        })
       }
-      parts.push({
-        content: mail,
-        type: TextTokenType.LINK,
-        url: emailProtocol + mail,
-      })
     } else if (url) {
       let validUrl: string | null = null
       if (urlTld) {

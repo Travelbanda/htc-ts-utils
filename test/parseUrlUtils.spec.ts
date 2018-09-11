@@ -20,6 +20,15 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'mailto:info@hotelchat.me')
   })
 
+  it('onlyWrongEmail()', () => {
+    const text = 'info@hotelchat.me12'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, 'info@hotelchat.me12')
+    strictEqual((parsing[0]).type, TextTokenType.TEXT)
+  })
+
   it('emptyString()', () => {
     const text = ''
     const parsing = parseText(text)
