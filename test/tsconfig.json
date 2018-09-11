@@ -6,6 +6,9 @@
       "types": [
           "node",
           "mocha"
-      ]
-  }
+      ],
+  },
+  "include": [
+    "../src/typings.d.ts"
+  ],
 }
