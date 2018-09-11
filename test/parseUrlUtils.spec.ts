@@ -72,6 +72,15 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'http://8.8.8.8')
   })
 
+  it('punycode()', () => {
+    const text = 'xn--d1acufc5f.xn--p1ai'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, 'xn--d1acufc5f.xn--p1ai')
+    strictEqual((parsing[0] as TextPartLink).url, 'http://xn--d1acufc5f.xn--p1ai')
+  })
+
   it('textAndUrl()', () => {
     const text = 'Это текст с некоторым url, например facebook.com или hotelchat.ru'
     const parsing = parseText(text)
