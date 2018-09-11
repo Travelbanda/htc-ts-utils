@@ -45,6 +45,24 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'http://facebook.com')
   })
 
+  it('onlyUrl()', () => {
+    const text = 'https://facebook.com'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, 'https://facebook.com')
+    strictEqual((parsing[0] as TextPartLink).url, 'https://facebook.com')
+  })
+
+  it('onlyIp()', () => {
+    const text = '8.8.8.8'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, '8.8.8.8')
+    strictEqual((parsing[0] as TextPartLink).url, 'http://8.8.8.8')
+  })
+
   it('textAndUrl()', () => {
     const text = 'Это текст с некоторым url, например facebook.com или hotelchat.ru'
     const parsing = parseText(text)
