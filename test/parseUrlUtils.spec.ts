@@ -63,6 +63,15 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'http://8.8.8.8')
   })
 
+  it('onlyIpWithProtocol()', () => {
+    const text = 'http://8.8.8.8'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual(parsing[0].content, 'http://8.8.8.8')
+    strictEqual((parsing[0] as TextPartLink).url, 'http://8.8.8.8')
+  })
+
   it('textAndUrl()', () => {
     const text = 'Это текст с некоторым url, например facebook.com или hotelchat.ru'
     const parsing = parseText(text)
