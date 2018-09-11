@@ -45,6 +45,15 @@ describe('utils/dateUtils', () => {
     strictEqual((parsing[0] as TextPartLink).url, 'http://facebook.com')
   })
 
+  it('onlyUrlError()', () => {
+    const text = 'facebook.comcomcom'
+    const parsing = parseText(text)
+
+    strictEqual(parsing.length, 1)
+    strictEqual((parsing[0]).type, TextTokenType.TEXT)
+    strictEqual(parsing[0].content, 'facebook.comcomcom')
+  })
+
   it('onlyUrl()', () => {
     const text = 'https://facebook.com'
     const parsing = parseText(text)
