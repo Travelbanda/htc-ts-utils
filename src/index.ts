@@ -72,7 +72,7 @@ export function createBirthdate(date: Date): Date {
 // email utils
 
 export function validateEmail(email: string): boolean {
-  if (email.length < 5 || email.length > 196 || !(/^[^@]+@[^@]+$/.test(email))) {
+  if (email.length < 5 || email.length > 128 || !(emailRegExp.test(email))) {
     return false
   }
   return true
@@ -259,6 +259,7 @@ function captureText(text: string, eventTokens: TextPart[]): void {
   })
 }
 
+export const emailRegExp = /^(?:^[^@\s]+@[^@\s]+\.[^@\s]{2,6})$/
 const emailRegExpPart = '(?:[^\\s:;<>()@]+)'
 const emailProtocol = 'mailto:'
 const emailRegExpString = `(?:${emailProtocol})?${emailRegExpPart}@${emailRegExpPart}\\.${emailRegExpPart}`
